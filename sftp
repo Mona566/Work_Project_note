@@ -1,0 +1,39 @@
+SFTP  http://jscape.com/blog/sftp-simplified
+https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server
+
+FTP, the File Transfer Protocol, was a popular, unencrypted method of transferring files between two remote systems. As of 2022, it has been deprecated by most modern software due to a lack of security,
+and can mostly only be used in legacy applications.
+
+SFTP, which stands for Secure File Transfer Protocol, is a separate protocol packaged built into SSH that can implement FTP commands over a secure connection. Typically, it can act as a drop-in replacement
+in any contexts where an FTP server is still needed.
+
+In almost all cases, SFTP is preferable to FTP because of its underlying security features and ability to piggy-back on an SSH connection. FTP is an insecure protocol that should only be used in limited cases 
+or on networks you trust.
+
+SFTP is primarily used for uploading or downloading files between a local computer and a remote one. The remote computer can be located in another building, 
+city, or even in another continent across the globe. SFTP file transfers can be carried out between a client (controlled by a user) and a server.
+
+
+| Command        | Description                                    | Example                     |
+| -------------- | ---------------------------------------------- | --------------------------- |
+| `ls`           | List files in the current remote directory     | `ls`                        |
+| `pwd`          | Show current remote directory                  | `pwd`                       |
+| `cd`           | Change remote directory                        | `cd /var/www/html`          |
+| `lpwd`         | Show current local directory                   | `lpwd`                      |
+| `lcd`          | Change local directory                         | `lcd /Users/lianna/Desktop` |
+| `get`          | Download a file from remote to local           | `get file.txt`              |
+| `mget`         | Download multiple files                        | `mget *.txt`                |
+| `put`          | Upload a file from local to remote             | `put file.txt`              |
+| `mput`         | Upload multiple files                          | `mput *.log`                |
+| `get -r`       | Download a folder recursively                  | `get -r logs`               |
+| `put -r`       | Upload a folder recursively                    | `put -r my_folder`          |
+| `rm`           | Delete a file on the remote server             | `rm oldfile.log`            |
+| `mkdir`        | Create a remote directory                      | `mkdir backups`             |
+| `rmdir`        | Remove a remote directory                      | `rmdir old_backups`         |
+| `chmod`        | Change permissions of a remote file            | `chmod 755 script.sh`       |
+| `!`            | Run a local shell command without leaving SFTP | `!ls` (lists local files)   |
+| `exit` / `bye` | Close the SFTP session                         | `bye`                       |
+
+
+
+
