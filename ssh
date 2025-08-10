@@ -1,0 +1,77 @@
+SSH https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys#ssh-overview
+
+The most common way of connecting to a remote Linux server is through SSH. SSH stands for Secure Shell and provides a safe and secure way of executing commands, making changes, 
+and configuring services remotely. When you connect through SSH, you log in using an account that exists on the remote server.
+
+
+Commpnly used orders
+
+## 🔹 **Basic SSH Commands**
+
+| Command                        | Description                   | Example                                   |
+| ------------------------------ | ----------------------------- | ----------------------------------------- |
+| `ssh user@host`                | Connect to a remote server    | `ssh admin@203.0.113.25`                  |
+| `ssh -p PORT user@host`        | Connect using a custom port   | `ssh -p 2222 admin@203.0.113.25`          |
+| `ssh -i keyfile.pem user@host` | Connect with a private key    | `ssh -i ~/.ssh/id_rsa admin@203.0.113.25` |
+| `ssh user@host "command"`      | Run a single command remotely | `ssh admin@203.0.113.25 "uptime"`         |
+| `exit`                         | Exit the SSH session          | `exit`                                    |
+
+---
+
+## 🔹 **File Transfer (without SFTP)**
+
+| Command                            | Description                 | Example                                           |
+| ---------------------------------- | --------------------------- | ------------------------------------------------- |
+| `scp file user@host:/path`         | Upload file to remote       | `scp index.html admin@203.0.113.25:/var/www/html` |
+| `scp user@host:/path/file .`       | Download file from remote   | `scp admin@203.0.113.25:/etc/nginx/nginx.conf .`  |
+| `scp -r folder user@host:/path`    | Upload folder recursively   | `scp -r project admin@203.0.113.25:/opt/`         |
+| `scp -r user@host:/path folder`    | Download folder recursively | `scp -r admin@203.0.113.25:/var/log logs`         |
+| `scp -P PORT file user@host:/path` | Use custom port             | `scp -P 2222 file.txt admin@203.0.113.25:/tmp`    |
+
+---
+
+## 🔹 **SSH Session Management**
+
+| Command                 | Description                                      | Example                          |
+| ----------------------- | ------------------------------------------------ | -------------------------------- |
+| `ssh-copy-id user@host` | Copy public key to remote for passwordless login | `ssh-copy-id admin@203.0.113.25` |
+| `ssh-add keyfile`       | Add a key to SSH agent                           | `ssh-add ~/.ssh/id_rsa`          |
+| `ssh-agent bash`        | Start a new agent session                        | `ssh-agent bash`                 |
+| `Ctrl + D`              | Close the SSH connection                         | *(press Ctrl+D)*                 |
+
+---
+
+## 🔹 **Useful Options**
+
+| Option                                  | Description                                      |
+| --------------------------------------- | ------------------------------------------------ |
+| `-v`                                    | Verbose mode (debug connection issues)           |
+| `-C`                                    | Enable compression for faster transfer           |
+| `-t`                                    | Force pseudo-terminal (for interactive commands) |
+| `-L local_port:remote_host:remote_port` | Local port forwarding                            |
+| `-R remote_port:local_host:local_port`  | Remote port forwarding                           |
+| `-D port`                               | Dynamic SOCKS proxy                              |
+
+---
+
+## 📌 **Example Workflows**
+
+**1. Connect and run a command:**
+
+```bash
+ssh admin@203.0.113.25 "df -h"
+```
+
+**2. Copy a backup to local machine:**
+
+```bash
+scp admin@203.0.113.25:/var/backups/db.sql.gz ~/backups/
+```
+
+**3. Upload code to server:**
+
+```bash
+scp -r ./myapp admin@203.0.113.25:/var/www/
+```
+
+
