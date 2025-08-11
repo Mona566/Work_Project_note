@@ -1,0 +1,12 @@
+Self-Attention at a High Level:
+
+As the model processes each word (each position in the input sequence), self attention allows it to look at other positions 
+in the input sequence for clues that can help lead to a better encoding for this word.
+
+Self-Attention in Detail: https://jalammar.github.io/illustrated-transformer/; https://blog.csdn.net/benzhujie1245com/article/details/117173090
+Matrix Calculation of Self-Attention
+The first step is to calculate the Query, Key, and Value matrices. We do that by packing our embeddings into a matrix X,
+and multiplying it by the weight matrices we’ve trained (WQ, WK, WV).
+
+Finally, since we’re dealing with matrices, we can condense steps two through six in one formula to calculate the outputs of the self-attention layer.
+
