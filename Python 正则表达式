@@ -1,0 +1,10 @@
+Python 正则表达式 ： https://www.runoob.com/python/python-reg-expressions.html
+ 
+检查一个字符串是否与某种模式匹配。
+
+re.match函数
+re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match() 就返回 none。
+
+re.search方法
+re.search 扫描整个字符串并返回第一个成功的匹配。
+
